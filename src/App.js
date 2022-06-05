@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import RulerRender from "./components/RulerRender";
+import RulerInput from "./components/RulerInput";
+import { useState } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [lineHeight, setLineHeight] = useState(0);
+    const [rulerWidth, setRulerWidth] = useState(0);
+    const [submitData, setSubmitData] = useState(undefined);
+
+    return (
+        <>
+            <RulerRender submitData={submitData} />
+            <RulerInput
+                line={{ lineHeight, setLineHeight }}
+                ruler={{ rulerWidth, setRulerWidth }}
+                setSubmitData={setSubmitData}
+            />
+        </>
+    );
 }
 
 export default App;
